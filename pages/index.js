@@ -10,7 +10,7 @@ export default function Home() {
   const [mail, setMail] = useLocalState("", "mail");
   const [firstRender, setFirstRender] = useState(true);
   useEffect(() => {
-    if (!mail && firstRender) {
+    if (!mail) {
       setMail(uniqid());
     }
     setFirstRender(false);
@@ -42,7 +42,7 @@ export default function Home() {
           </Form.Group>
         </Form>
         <Divider />
-        <MailList mail={mail} />
+        {mail && <MailList mail={mail} />}
       </Container>
     </>
   );

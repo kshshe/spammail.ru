@@ -38,7 +38,8 @@ export default async (req, res) => {
       data.push(mail);
     })
   );
-  connection.end();
+  await connection.closeBox("INBOX");
+  await connection.end();
 
   res.json({ data });
 };
